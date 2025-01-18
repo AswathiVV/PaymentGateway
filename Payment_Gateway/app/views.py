@@ -15,7 +15,7 @@ def order_payment(request):
         amount = request.POST.get("amount")
         client = razorpay.Client(auth=(settings.RAZORPAY_KEY_ID,settings.RAZORPAY_KEY_SECRET))
         razorpay_order = client.order.create(
-            {"amount": int(amount) * 100, "currency": "INR", "payment_capture": "1"}
+            {"amount": int(amount)*100, "currency": "INR", "payment_capture": "1"}
         )
         order_id = razorpay_order['id']
         order = Order.objects.create(
